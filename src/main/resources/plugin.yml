@@ -1,0 +1,17 @@
+name: Doppelganger
+version: @version@
+main: neocraft.doppelganger.Doppelganger
+api-version: 1.15
+commands:
+  dchange:
+    description: doppel change command
+    usage: /<command>
+    permission: Doppelganger.admin
+  dclear:
+    description: doppel clear command
+    usage: /<command>
+    permission: Doppelganger.admin
+permissions:
+  Doppelganger.admin:
+    description: Gives access to Doppelganger admin commands
+    default: op
