@@ -1,13 +1,12 @@
 package neocraft.doppelganger.command;
 
 import neocraft.doppelganger.util.NickNamerUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-public class ClearCommand implements CommandExecutor {
+public class SwapCommand implements CommandExecutor {
     @Override
     public boolean onCommand(
             @NotNull CommandSender sender,
@@ -15,15 +14,14 @@ public class ClearCommand implements CommandExecutor {
             @NotNull String label,
             String[] args
     ) {
-        if (args.length < 1) {
+        if (args.length < 2) {
             return false;
         }
         String targetPlayerName = args[0];
-        if (targetPlayerName.equals("@a")) {
-            Bukkit.getOnlinePlayers().forEach(NickNamerUtil::clear);
-        } else {
-            NickNamerUtil.clear(targetPlayerName);
-        }
+        String doppelgangerPlayerName = args[1];
+
+        NickNamerUtil.change(targetPlayerName, doppelgangerPlayerName);
+        NickNamerUtil.change(doppelgangerPlayerName, targetPlayerName);
         return true;
     }
 }

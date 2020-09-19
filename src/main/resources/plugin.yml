@@ -11,6 +11,10 @@ commands:
     description: doppel clear command
     usage: /<command>
     permission: Doppelganger.admin
+  dswap:
+    description: doppel swap command
+    usage: /<command>
+    permission: Doppelganger.admin
 permissions:
   Doppelganger.admin:
     description: Gives access to Doppelganger admin commands
