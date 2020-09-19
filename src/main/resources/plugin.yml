@@ -2,6 +2,7 @@ name: Doppelganger
 version: @version@
 main: neocraft.doppelganger.Doppelganger
 api-version: 1.15
+depend: [NickNamer]
 commands:
   dchange:
     description: doppel change command
