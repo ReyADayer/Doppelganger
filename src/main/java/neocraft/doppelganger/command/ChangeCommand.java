@@ -20,10 +20,18 @@ public class ChangeCommand implements CommandExecutor {
         }
         String targetPlayerName = args[0];
         String doppelgangerPlayerName = args[1];
-        if (targetPlayerName.equals("@a")) {
-            Bukkit.getOnlinePlayers().forEach(player -> NickNamerUtil.change(player, doppelgangerPlayerName));
+        if (args.length > 3 && args[2].equals("--skin")) {
+            if (targetPlayerName.equals("@a")) {
+                Bukkit.getOnlinePlayers().forEach(player -> NickNamerUtil.changeSkin(player, doppelgangerPlayerName));
+            } else {
+                NickNamerUtil.changeSkin(targetPlayerName, doppelgangerPlayerName);
+            }
         } else {
-            NickNamerUtil.change(targetPlayerName, doppelgangerPlayerName);
+            if (targetPlayerName.equals("@a")) {
+                Bukkit.getOnlinePlayers().forEach(player -> NickNamerUtil.change(player, doppelgangerPlayerName));
+            } else {
+                NickNamerUtil.change(targetPlayerName, doppelgangerPlayerName);
+            }
         }
         return true;
     }

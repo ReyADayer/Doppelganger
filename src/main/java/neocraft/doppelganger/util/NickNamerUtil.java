@@ -25,7 +25,39 @@ public class NickNamerUtil {
     }
 
     public static void change(@NotNull UUID uuid, @NotNull String doppelgangerPlayerName) {
+        changeSkin(uuid, doppelgangerPlayerName);
+        changeNick(uuid, doppelgangerPlayerName);
+    }
+
+    public static void changeSkin(@NotNull String playerName, @NotNull String doppelgangerPlayerName) {
+        @Nullable UUID uuid = PlayerUtil.getTargetUUID(playerName);
+        if (uuid == null) {
+            return;
+        }
+        changeSkin(uuid, doppelgangerPlayerName);
+    }
+
+    public static void changeSkin(@NotNull Player player, @NotNull String doppelgangerPlayerName) {
+        changeSkin(player.getUniqueId(), doppelgangerPlayerName);
+    }
+
+    public static void changeSkin(@NotNull UUID uuid, @NotNull String doppelgangerPlayerName) {
         nickManager.setSkin(uuid, doppelgangerPlayerName);
+    }
+
+    public static void changeNick(@NotNull String playerName, @NotNull String doppelgangerPlayerName) {
+        @Nullable UUID uuid = PlayerUtil.getTargetUUID(playerName);
+        if (uuid == null) {
+            return;
+        }
+        changeNick(uuid, doppelgangerPlayerName);
+    }
+
+    public static void changeNick(@NotNull Player player, @NotNull String doppelgangerPlayerName) {
+        changeNick(player.getUniqueId(), doppelgangerPlayerName);
+    }
+
+    public static void changeNick(@NotNull UUID uuid, @NotNull String doppelgangerPlayerName) {
         nickManager.setNick(uuid, doppelgangerPlayerName);
     }
 
